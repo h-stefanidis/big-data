@@ -1,0 +1,154 @@
+<!ELEMENT company (division+, project+, employee+)>
+<!ELEMENT division (DNAME, LOCATION, project+, employee+)>
+<!ELEMENT project (PNAME, BUDGET, assign+)>
+<!ELEMENT employee (ENAME, OFFICE, BIRTHDATE, SALARY, assign+)>
+<!ELEMENT assign (HOURS)>
+
+<!ATTLIST division DID CDATA #REQUIRED>
+<!ATTLIST project PID CDATA #REQUIRED>
+<!ATTLIST employee EID CDATA #REQUIRED>
+<!ATTLIST assign PID CDATA #REQUIRED EID CDATA #REQUIRED>
+
+<!ELEMENT DNAME (#PCDATA)>
+<!ELEMENT LOCATION (#PCDATA)>
+<!ELEMENT PNAME (#PCDATA)>
+<!ELEMENT ENAME (#PCDATA)>
+<!ELEMENT BIRTHDATE(#PCDATA)>
+<!ELEMENT OFFICE (#PCDATA)>
+<!ELEMENT BIRTHDATE (#PCDATA)>
+<!ELEMENT SALARY (#PCDATA)>
+<!ELEMENT HOURS (#PCDATA)>
+
+<!ENTITY didLength "3">
+<!ENTITY dnameLength "20">
+<!ENTITY locationLength "30">
+<!ENTITY pidLength "4">
+<!ENTITY pnameLength "40">
+<!ENTITY budgetLength "8">
+<!ENTITY eidLength "6">
+<!ENTITY enameLength "30">
+<!ENTITY officeLength "6">
+<!ENTITY salaryLength "6">
+<!ENTITY hoursLength "4">
+
+<!ATTLIST DID CDATA #REQUIRED LENGTH &didLength;>
+<!ATTLIST DNAME CDATA #REQUIRED LENGTH &dnameLength;>
+<!ATTLIST LOCATION CDATA #REQUIRED LENGTH &locationLength;>
+<!ATTLIST PID CDATA #REQUIRED LENGTH &pidLength;>
+<!ATTLIST PNAME CDATA #REQUIRED LENGTH &pnameLength;>
+<!ATTLIST BUDGET CDATA #REQUIRED LENGTH &budgetLength;>
+<!ATTLIST EID CDATA #REQUIRED LENGTH &eidLength;>
+<!ATTLIST ENAME CDATA #REQUIRED LENGTH &enameLength;>
+<!ATTLIST OFFICE CDATA #REQUIRED LENGTH &officeLength;>
+<!ATTLIST BIRTHDATE CDATA #REQUIRED>
+<!ATTLIST SALARY CDATA #REQUIRED LENGTH &salaryLength;>
+<!ATTLIST HOURS CDATA #REQUIRED LENGTH &hoursLength;>
+
+<?xml version="1.0"?>
+<!DOCTYPE company SYSTEM "company.dtd">
+<company>
+    <division DID="001">
+        <DNAME>Web Development</DNAME>
+        <LOCATION>Location A</LOCATION>
+        <project PID="PTV">
+            <PNAME>Project PTV</PNAME>
+            <BUDGET>10000</BUDGET>
+            <assign PID="PTV" EID="E001">
+                <HOURS>40</HOURS>
+            </assign>
+            <assign PID="PTV" EID="E002">
+                <HOURS>30</HOURS>
+            </assign>
+        </project>
+        <project PID="Dyson">
+            <PNAME>Project Dyson</PNAME>
+            <BUDGET>15000</BUDGET>
+            <assign PID="Dyson" EID="E003">
+                <HOURS>25</HOURS>
+            </assign>
+            <assign PID="Dyson" EID="E004">
+                <HOURS>35</HOURS>
+            </assign>
+        </project>
+        <employee EID="E001">
+            <ENAME>Ilya</ENAME>
+            <OFFICE>101</OFFICE>
+            <BIRTHDATE>1996-05-15</BIRTHDATE>
+            <SALARY>60000</SALARY>
+            <assign PID="PTV"/>
+        </employee>
+        <employee EID="E002">
+            <ENAME>Carey</ENAME>
+            <OFFICE>102</OFFICE>
+            <BIRTHDATE>1985-10-20</BIRTHDATE>
+            <SALARY>70000</SALARY>
+            <assign PID="PTV"/>
+        </employee>
+        <employee EID="E003">
+            <ENAME>Harrison</ENAME>
+            <OFFICE>103</OFFICE>
+            <BIRTHDATE>1999-02-28</BIRTHDATE>
+            <SALARY>55000</SALARY>
+            <assign PID="Dyson"/>
+        </employee>
+        <employee EID="E004">
+            <ENAME>Kevin</ENAME>
+            <OFFICE>104</OFFICE>
+            <BIRTHDATE>2001-12-10</BIRTHDATE>
+            <SALARY>65000</SALARY>
+            <assign PID="Dyson"/>
+        </employee>
+    </division>
+    <division DID="002">
+        <DNAME>Data Product Development</DNAME>
+        <LOCATION>Location B</LOCATION>
+        <project PID="Oracle">
+            <PNAME>Oracle Integration</PNAME>
+            <BUDGET>20000</BUDGET>
+            <assign PID="Oracle" EID="E006">
+                <HOURS>45</HOURS>
+            </assign>
+            <assign PID="Oracle" EID="E007">
+                <HOURS>20</HOURS>
+            </assign>
+        </project>
+        <project PID="Dashboard">
+            <PNAME>Dashboard Development</PNAME>
+            <BUDGET>18000</BUDGET>
+            <assign PID="Dashboard" EID="E008">
+                <HOURS>30</HOURS>
+            </assign>
+            <assign PID="Dashboard" EID="E009">
+                <HOURS>25</HOURS>
+            </assign>
+        </project>
+        <employee EID="E006">
+            <ENAME>Pratik</ENAME>
+            <OFFICE>201</OFFICE>
+            <BIRTHDATE>1999-10-23</BIRTHDATE>
+            <SALARY>50000</SALARY>
+            <assign PID="Oracle"/>
+        </employee>
+        <employee EID="E007">
+            <ENAME>Simone</ENAME>
+            <OFFICE>202</OFFICE>
+            <BIRTHDATE>1991-04-30</BIRTHDATE>
+            <SALARY>62000</SALARY>
+            <assign PID="Oracle"/>
+        </employee>
+        <employee EID="E008">
+            <ENAME>Ksi</ENAME>
+            <OFFICE>203</OFFICE>
+            <BIRTHDATE>1987-11-15</BIRTHDATE>
+            <SALARY>68000</SALARY>
+            <assign PID="Dashboard"/>
+        </employee>
+        <employee EID="E009">
+            <ENAME>Ethan</ENAME>
+            <OFFICE>204</OFFICE>
+            <BIRTHDATE>1994-03-25</BIRTHDATE>
+            <SALARY>59000</SALARY>
+            <assign PID="Dashboard"/>
+        </employee>
+    </division>
+</company>
